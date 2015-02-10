@@ -12,7 +12,9 @@ public class DbCredentials {
 	
 	private static void initialize() {
 		
-
+		url = "";
+		user = "";
+		password = "";
 	}
 
 	public static String getUrl() {
