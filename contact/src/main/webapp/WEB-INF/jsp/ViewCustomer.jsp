@@ -169,7 +169,7 @@
 					editManager.initialize(json)
 				}
 				else{
-					window.location.href = "http://localhost:8181/";		
+					window.location.href = "/";		
 				}
 			},			
 	

@@ -44,7 +44,7 @@
 
 				var username = $('#username').val()//email
 										
-				var url = 'http://localhost:8181/recoverPassword?'
+				var url = '/recoverPassword?'
 				var data = 'username=' + encodeURIComponent(username)
 				
 				$('#forgot').attr('href', url + data)	

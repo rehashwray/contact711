@@ -80,7 +80,7 @@ var Regex = {
     		viewManager.showErrors(parameters.id, exist, validateResult)
     	}else{    		
     		
-    		var url = 'http://localhost:8181/validate'
+    		var url = '/validate'
     			
     		var dataMember = {
     				type : parameters.type,
@@ -161,7 +161,7 @@ var Regex = {
 		if(regexResult.valid){
 			if(member.type == 'username'){
 				
-				var url = "http://localhost:8181/validate"	
+				var url = "/validate"	
 				var data = 'dataMember=' + JSON.stringify(member)
 				$.get(url, data, function(results) {	
 										

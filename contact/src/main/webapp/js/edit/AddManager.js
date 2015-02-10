@@ -178,7 +178,7 @@ AddManager.prototype
 
 	customerProfileAdd = JSON.stringify(customerProfileAdd)
 	
-	var url = 'http://localhost:8181/AddCustomerProfile'
+	var url = '/AddCustomerProfile'
 	var data = 'customerProfileAdd=' + customerProfileAdd
 	
 	var token = $("meta[name='_csrf']").attr("content")
@@ -193,7 +193,7 @@ AddManager.prototype
             request.setRequestHeader(header, token);
         },
 	    success: function(response){
-			window.location.href = "http://localhost:8181/";		
+			window.location.href = "/";		
 	    }
 	}); 
 	

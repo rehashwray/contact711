@@ -21,7 +21,7 @@
 
 	<div class="container">
 
-		<form class="form-horizontal" action="http://localhost:8181/post" method="post">
+		<form class="form-horizontal" action="/post" method="post">
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 
@@ -47,7 +47,7 @@
 		$($('#send').click(function(event) {
 			event.preventDefault()
 
-			var url = 'http://localhost:8181/post'
+			var url = '/post'
 
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");

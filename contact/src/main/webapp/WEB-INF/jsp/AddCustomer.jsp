@@ -206,7 +206,7 @@
 			$('body').on('click', '.cancelButton', function(event){
 				event.preventDefault()
 
-				window.location.href = "http://localhost:8181/Search";
+				window.location.href = "/Search";
 			})
 		);
 	</script>

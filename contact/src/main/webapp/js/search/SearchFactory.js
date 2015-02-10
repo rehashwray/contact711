@@ -55,7 +55,7 @@ mainApp.factory('Search', function($http, PageManager, ViewManager) {
 			sqp.from = (currentPage - 1) * $scope.displayLimit
 			sqp.displayLimit = $scope.displayLimit
 			
-			var url = "http://localhost:8181/Search"		
+			var url = "/Search"		
 			
 			$http({
 				url : url,

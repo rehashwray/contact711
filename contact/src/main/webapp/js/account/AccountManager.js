@@ -34,7 +34,7 @@ AccountManager.prototype
 	
 	user = JSON.stringify(user)
 	
-	var url = 'http://localhost:8181/' + this.path + '?'
+	var url = '/' + this.path + '?'
 	var data = 'user=' + user
 	
 	$('#send').attr('href', url + data);

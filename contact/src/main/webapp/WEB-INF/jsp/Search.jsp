@@ -68,7 +68,7 @@
 					<tr ng-repeat="customer in customers" ng-cloak class="ng-cloak">
 						<td> {{ customer.customer_name }} </td>
 						<td> {{ customer.last_name }} 
-							<a ng-href="http://localhost:8181/ViewCustomer?id={{customer.customer_id | encodeURIComponent}}">
+							<a ng-href="/ViewCustomer?id={{customer.customer_id | encodeURIComponent}}">
 								<span class="badge">View</span>								
 							</a>
 						</td>

@@ -86,7 +86,7 @@ EditManager.prototype.saveData = function saveData() {
 
 	customerProfileDelete = JSON.stringify(customerProfileDelete)
 
-	var url = 'http://localhost:8181/updateCustomerProfile'
+	var url = '/updateCustomerProfile'
 	var data = 'customerProfileAdd=' + customerProfileAdd
 			+ '&customerProfileUpdate=' + customerProfileUpdate
 			+ '&customerProfileDelete=' + customerProfileDelete
@@ -163,7 +163,7 @@ EditManager.prototype.deleteData = function deleteData() {
 
 	var customer = this.customerManager.getCustomer()
 	
-	var url = 'http://localhost:8181/deleteCustomerProfile'
+	var url = '/deleteCustomerProfile'
 	var data = 'customer=' + JSON.stringify(customer)
 	
 	var token = $("meta[name='_csrf']").attr("content")
@@ -178,7 +178,7 @@ EditManager.prototype.deleteData = function deleteData() {
             request.setRequestHeader(header, token);
         },
 	    success: function(response){
-			window.location.href = "http://localhost:8181/";		
+			window.location.href = "/";		
 	    }
 	});
 	
