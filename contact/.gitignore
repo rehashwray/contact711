@@ -1,2 +1,4 @@
 /bin/
 /target/
+/ControllerLog.txt
+/DbCredentialsFile.txt
