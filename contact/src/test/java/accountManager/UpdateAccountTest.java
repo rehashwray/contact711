@@ -41,11 +41,9 @@ public class UpdateAccountTest {
 					+ record.getIdName() + " = " + record.getIdValue();
 
 			dbUpdate.updateDb(query, null, record.getIdName());			
-			//assertFalse(existance.exist(query, parameters));
 		}
 	}
 
-	@Ignore
 	@Test
 	public void testUpdateUser() throws DbException {
 		

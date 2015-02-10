@@ -37,7 +37,6 @@ public class ValidateDataMemberTest {
 					+ record.getIdName() + " = " + record.getIdValue();
 
 			dbUpdate.updateDb(query, null, record.getIdName());			
-			//assertFalse(existance.exist(query, parameters));
 		}
 	}
 
@@ -51,6 +50,5 @@ public class ValidateDataMemberTest {
 		assertFalse(validateDataMember.existUsername(dataMember, "alazi"));
 		
 		rtd.add(new Record("users", "user_id", userId));		
-	}
-
+	}	
 }

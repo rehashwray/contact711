@@ -1,12 +1,11 @@
 package accountManager;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import tableModel.User;
@@ -41,11 +40,9 @@ public class DeleteAccountTest {
 					+ record.getIdName() + " = " + record.getIdValue();
 
 			dbUpdate.updateDb(query, null, record.getIdName());			
-			//assertFalse(existance.exist(query, parameters));
 		}
 	}
 
-	@Ignore
 	@Test
 	public void testDeleteUser() throws DbException {
 		
@@ -74,23 +71,20 @@ public class DeleteAccountTest {
 	public void testDeleteRole() throws DbException {
 		
 		String query = "select count(*) from user_roles "
-				+ "where username = ? and role = ? "
-				+ "and user_role_id = ? ";
+				+ "where role = ? and user_role_id = ? ";
 				
 		User user = new User(userId, "marvin", "cas");			
-		Integer userRoleId = userAdd.addRole(user.getUserId());//not possible to exist same id before, no need to test
+		Integer userId = userAdd.addRole(user.getUserId());//not possible to exist same id before, no need to test
 		
-		user = new User(userId, "marvin222", "cas222");
-		userDelete.deleteUser(user.getUsername());
+		userDelete.deleteRole(userId);
 		
 		ArrayList<Object> parameters = new ArrayList<Object>();
 
-		parameters.add(user.getUsername());
 		parameters.add("ROLE_USER");
-		parameters.add(userRoleId);
+		parameters.add(userId);
 		
 		assertFalse(existance.exist(query, parameters));
 		
-		rtd.add(new Record("user_roles", "user_role_id", userRoleId));
+		rtd.add(new Record("user_roles", "user_id", userId));
 	}	
 }

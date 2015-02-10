@@ -39,7 +39,6 @@ public class ValidateDataMember {
 		} catch (DbException e) {
 
 		}
-
 		return exist;
 	}
 	
@@ -65,7 +64,6 @@ public class ValidateDataMember {
 		} catch (DbException e) {
 
 		}
-
 		return exist;
 	}
 	
@@ -91,7 +89,6 @@ public class ValidateDataMember {
 		} catch (DbException e) {
 
 		}
-
 		return exist;
 	}
 }

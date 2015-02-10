@@ -19,16 +19,17 @@ import db.DbCustomers;
 
 public class CustomerProfileInitializer extends ErrorHandler {
 
-	public String initialize(HttpServletRequest request) {
+	public static String initialize(HttpServletRequest request) {
 
 		String json = null;
 
 		Integer id = null;
 		try {
-			id = Integer.parseInt(Cryptography.decrypt(request
-					.getParameter("id")));
+			id = Integer.parseInt(Cryptography.decrypt(
+					request.getParameter("id")));
 		} catch (Exception e1) {
 			Log.logError(e1);
+			return json;
 		}
 
 		if (id != null) {

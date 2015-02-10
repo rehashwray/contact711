@@ -1,5 +1,6 @@
 package tableModel;
 
+import logger.Log;
 import security.Cryptography;
 
 public class Customer {
@@ -22,7 +23,7 @@ public class Customer {
 		try {
 			this.customer_id = Cryptography.encrypt(customer_id + "");
 		} catch (Exception e) {
-			//
+			Log.logError(e);
 		}
 
 		this.customer_name = customer_name;
@@ -56,7 +57,7 @@ public class Customer {
 		try {
 			value = Integer.parseInt(Cryptography.decrypt(customer_id));
 		} catch (Exception e) {
-			//
+			Log.logError(e);
 		}		
 		return value;
 	}

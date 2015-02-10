@@ -7,6 +7,8 @@ import java.security.InvalidKeyException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 
+import logger.Log;
+
 public class CryptographyException extends Exception {
 
 	/**
@@ -15,31 +17,31 @@ public class CryptographyException extends Exception {
 	private static final long serialVersionUID = -3193199957082894315L;
 
 	public CryptographyException(IllegalBlockSizeException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 	public CryptographyException(BadPaddingException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 	public CryptographyException(String string, IOException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 	public CryptographyException(String string, IllegalBlockSizeException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 	public CryptographyException(UnsupportedEncodingException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 	public CryptographyException(String string, BadPaddingException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 	public CryptographyException(String string, InvalidKeyException e) {
-		e.printStackTrace();
+		Log.logError(e);
 	}
 
 }

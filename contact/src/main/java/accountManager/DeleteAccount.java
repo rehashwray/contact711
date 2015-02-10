@@ -39,7 +39,7 @@ public class DeleteAccount {
 		try {
 			userId = dbUpdate.updateDb(queryUser, parametersUser, "user_id");
 		} catch (DbException e) {
-		
+			Log.logError(e);
 		}
 		return userId;
 	}
@@ -55,7 +55,7 @@ public class DeleteAccount {
 		try {
 			dbUpdate.updateDb(queryUser, parametersUser, "user_id");
 		} catch (DbException e) {
-		
+			Log.logError(e);;
 		}
 	}
 }

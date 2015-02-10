@@ -6,15 +6,13 @@ import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import accountManager.AddAccount;
 import tableModel.User;
 import customerManager.Record;
 import db.DbException;
-import db.DbUpdate;
 import db.DbExistance;
+import db.DbUpdate;
 
 public class AddAccountTest {
 
@@ -41,11 +39,9 @@ public class AddAccountTest {
 					+ record.getIdName() + " = " + record.getIdValue();
 
 			dbUpdate.updateDb(query, null, record.getIdName());			
-			//assertFalse(existance.exist(query, parameters));
 		}
 	}
 
-	@Ignore
 	@Test
 	public void testAddUser() throws DbException {
 		
@@ -72,8 +68,7 @@ public class AddAccountTest {
 	public void testAddRole() throws DbException {
 		
 		String query = "select count(*) from user_roles "
-				+ "where username = ? and role = ? "
-				+ "and user_role_id = ? ";
+				+ "where role = ? and user_role_id = ? ";
 				
 		User user = new User(userId, "marvin", "cas");	
 		
@@ -81,7 +76,6 @@ public class AddAccountTest {
 		
 		ArrayList<Object> parameters = new ArrayList<Object>();
 
-		parameters.add(user.getUsername());
 		parameters.add("ROLE_USER");
 		parameters.add(userRoleId);
 		

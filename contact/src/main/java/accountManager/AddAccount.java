@@ -48,7 +48,7 @@ public class AddAccount {
 
 		Integer result = null;
 		try {
-			result = dbUpdate.updateDb(query, parameters, "user_role_id");
+			result = dbUpdate.updateDb(query, parameters, "user_id");
 		} catch (DbException e) {
 			Log.logError(e);
 		}		
