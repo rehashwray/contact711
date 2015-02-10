@@ -10,10 +10,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import logger.Log;
 import db.DbAccount;
 import db.DbException;
 import db.DbSystemCredentials;
+import error.Log;
 
 public class PasswordRecover {
 

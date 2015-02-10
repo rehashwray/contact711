@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import logger.Log;
+import error.Log;
 
 public class DbUtilities {
 

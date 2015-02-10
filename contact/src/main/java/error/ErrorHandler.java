@@ -1,4 +1,4 @@
-package logger;
+package error;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

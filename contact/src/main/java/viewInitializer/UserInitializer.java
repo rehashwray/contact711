@@ -1,8 +1,5 @@
 package viewInitializer;
 
-import logger.ErrorHandler;
-import logger.Log;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +10,8 @@ import tableModel.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import db.DbAccount;
+import error.ErrorHandler;
+import error.Log;
 
 public class UserInitializer extends ErrorHandler{
 	

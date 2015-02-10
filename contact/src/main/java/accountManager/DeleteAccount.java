@@ -2,11 +2,11 @@ package accountManager;
 
 import java.util.ArrayList;
 
-import logger.Log;
 import customerProfileManager.Delete;
 import db.DbCustomers;
 import db.DbException;
 import db.DbUpdate;
+import error.Log;
 
 public class DeleteAccount {
 

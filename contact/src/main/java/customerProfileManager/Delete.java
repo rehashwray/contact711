@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import logger.Log;
 import tableModel.CustomerAddress;
 import tableModel.CustomerEmail;
 import tableModel.CustomerPhoneNumber;
 import tableModel.CustomerProfile;
 import db.DbException;
 import db.DbUpdate;
+import error.Log;
 
 public class Delete {
 

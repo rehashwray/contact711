@@ -7,7 +7,7 @@ import java.security.InvalidKeyException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 
-import logger.Log;
+import error.Log;
 
 public class CryptographyException extends Exception {
 

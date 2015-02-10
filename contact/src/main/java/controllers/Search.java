@@ -1,8 +1,5 @@
 package controllers;
 
-import logger.ErrorHandler;
-import logger.Log;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +16,8 @@ import search.SearchResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import db.DbCustomers;
+import error.ErrorHandler;
+import error.Log;
 
 @Controller
 public class Search extends ErrorHandler {

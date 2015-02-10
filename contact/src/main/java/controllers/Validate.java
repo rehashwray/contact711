@@ -1,8 +1,5 @@
 package controllers;
 
-import logger.ErrorHandler;
-import logger.Log;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +15,9 @@ import validation.Unique;
 import validation.ValidateDataMember;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import error.ErrorHandler;
+import error.Log;
 
 @Controller//change to rest controller
 public class Validate extends ErrorHandler {

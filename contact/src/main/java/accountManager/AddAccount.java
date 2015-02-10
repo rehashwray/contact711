@@ -2,10 +2,10 @@ package accountManager;
 
 import java.util.ArrayList;
 
-import logger.Log;
 import tableModel.User;
 import db.DbException;
 import db.DbUpdate;
+import error.Log;
 
 public class AddAccount {
 	protected DbUpdate dbUpdate = new DbUpdate();

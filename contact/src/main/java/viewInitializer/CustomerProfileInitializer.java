@@ -2,9 +2,6 @@ package viewInitializer;
 
 import javax.servlet.http.HttpServletRequest;
 
-import logger.ErrorHandler;
-import logger.Log;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +13,8 @@ import tableModel.CustomerProfile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import db.DbCustomers;
+import error.ErrorHandler;
+import error.Log;
 
 public class CustomerProfileInitializer extends ErrorHandler {
 

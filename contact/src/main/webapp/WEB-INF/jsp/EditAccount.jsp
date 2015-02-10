@@ -118,7 +118,7 @@
 			function(){
 				var user = <%=json%>
 
-				if(json == null)
+				if(user == null)
 					window.location.href = "/";		
 				
 				$('#username1').val(user.username)

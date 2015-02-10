@@ -15,9 +15,9 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import logger.Log;
 import db.DbException;
 import db.DbSystemCredentials;
+import error.Log;
 
 public class Cryptography {
 

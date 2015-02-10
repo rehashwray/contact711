@@ -1,4 +1,4 @@
-package logger;
+package error;
 
 import java.io.BufferedWriter;
 import java.io.File;

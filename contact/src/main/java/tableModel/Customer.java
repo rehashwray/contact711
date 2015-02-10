@@ -1,6 +1,6 @@
 package tableModel;
 
-import logger.Log;
+import error.Log;
 import security.Cryptography;
 
 public class Customer {

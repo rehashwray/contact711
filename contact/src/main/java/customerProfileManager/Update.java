@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import logger.Log;
 import tableModel.Customer;
 import tableModel.CustomerAddress;
 import tableModel.CustomerEmail;
 import tableModel.CustomerPhoneNumber;
 import tableModel.CustomerProfile;
 import db.DbException;
+import error.Log;
 
 public class Update 
 	extends Add {

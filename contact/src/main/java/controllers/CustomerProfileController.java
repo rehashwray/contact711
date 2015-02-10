@@ -1,8 +1,5 @@
 package controllers;
 
-import logger.ErrorHandler;
-import logger.Log;
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +22,8 @@ import customerProfileManager.Update;
 import customerProfileManager.PrimaryKeys;
 import db.DbException;
 import db.DbAccount;
+import error.ErrorHandler;
+import error.Log;
 
 @Controller
 public class CustomerProfileController extends ErrorHandler  {
