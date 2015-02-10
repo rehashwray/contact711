@@ -1,0 +1,44 @@
+
+#navTab {	
+	width : 60%;
+	margin-top : 3%;
+	margin-left : auto;
+	margin-right : auto;
+}
+
+.tabData {
+	width : 70%;
+	margin-top : 3%;
+	margin-left : 0%;
+	margin-right: auto;	
+}
+
+#emailData {
+	display : none;
+}
+
+#phoneData {
+	display : none;
+}
+
+#addressData {
+	display : none;
+}
+
+.removeData {
+	float:left;	
+	clear:both;
+}
+
+.addData {
+	float:left;
+	clear:both	
+}
+
+.popover-content {
+    word-wrap: break-word;
+}
+
+.badge {
+	background-color: #c0c0c0;
+}

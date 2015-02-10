@@ -1,0 +1,44 @@
+
+#page {
+	margin-left: 15%;
+	margin-right: auto;
+}
+
+#searchGroup {
+	width: 80%
+}
+
+#tableGroup {
+	width: 80%;
+	margin-top: 5%;
+}
+
+.badge {
+	float: right
+}
+
+#emptyResult {
+	width: 20%;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: 50%;
+	text-align: center
+}
+
+#waiting {
+	width: 20%;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: 50%;
+	text-align: center
+}
+
+#pager {
+	margin-top : 5%;
+	margin-left : 40%; /*don't like this*/
+	margin-right : auto;
+}
+
+.ng-cloak {
+    opacity: 0;
+}

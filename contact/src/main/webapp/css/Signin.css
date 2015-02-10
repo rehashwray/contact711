@@ -1,0 +1,63 @@
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  //background-color: #eee;  
+  background: url(
+  "http://static.panoramio.com/photos/large/24154426.jpg"
+  ) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*  "http://www.neilpeterson.com/wp-content/uploads/2009/08/social-network.jpg" 
+  */
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 30% auto;
+}
+.form-signin .form-signin-heading{
+  margin-bottom: 10px;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  
+    background-color : #white; 
+ 
+}
+.form-signin input[type="password"] {
+  //margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;  
+}
+
+.lab {
+	font-size: 20px;
+	font-family: "Trebuchet MS";
+	color: white;	
+}
+
+#reg {
+	text-decoration:none;  
+	font-size: 20px;
+	font-family: "Trebuchet MS";
+	color: #c0c0c0;
+	font-weight: bold;
+}
