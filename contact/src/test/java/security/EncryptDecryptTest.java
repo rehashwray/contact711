@@ -1,4 +1,4 @@
-package crypto;
+package security;
 
 import static org.junit.Assert.*;
 

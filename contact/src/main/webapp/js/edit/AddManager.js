@@ -16,18 +16,6 @@ AddManager.prototype.initialize = function initialize(customerProfile){
 	this.phoneNumbersManager = new NewDataManager([0], 'phone_numbers')
 	this.addressesManager = new NewDataManager([0], 'addresses')
 		
-	/*function initializeData(members, type){
-		var data = {}
-		members.shift()
-		for(var key in members){
-			data[members[key]] = null
-		}
-		this.viewManager.addForm(0, data, type)		
-	} 	
-	initializeData.call(this, this.emailsManager.getDataMembers(), 'Email')
-	initializeData.call(this, this.phoneNumbersManager.getDataMembers(), 'PhoneNumber')
-	initializeData.call(this, this.addressesManager.getDataMembers(), 'Address')
-	*/
 	this.addData("#addEmail")
 	this.addData("#addPhoneNumber")
 	this.addData("#addAddress")
@@ -40,6 +28,8 @@ AddManager.prototype.initialize = function initialize(customerProfile){
 	
 	allKeys = this.addressesManager.getAllDataKeys() 
 	this.viewManager.removeDelete('Address', allKeys.pop())
+	
+	this.viewManager.addChangeButtons(false)
 }
 
 AddManager.prototype.tab = function tab(domElement){
@@ -91,8 +81,7 @@ AddManager.prototype.addData = function addData(domElement){
 	
 	this.viewManager.addForm(dataTemplate.newDataKey, data, type)
 	
-	if(allKeys.length == 2){
-		
+	if(allKeys.length == 2){		
 		this.viewManager.addDelete(type, allKeys.shift())//might be better before adding key 
 	}
 }
@@ -196,9 +185,5 @@ AddManager.prototype
 			window.location.href = "/";		
 	    }
 	}); 
-	
-	/*	$.get(url, data, function(results) {	
-		window.location.href = "http://localhost:8181/";		
-	});*/
 }
 

@@ -32,6 +32,8 @@ EditManager.prototype.initialize = function initialize(customerProfile) {
 	if(allKeys.length == 1){
 		this.viewManager.removeDelete('Address', allKeys.pop())
 	}
+	
+	this.viewManager.addChangeButtons(true)
 }
 
 EditManager.prototype.populateName = function populateName(dataElement) {
@@ -107,10 +109,6 @@ EditManager.prototype.saveData = function saveData() {
 			outerClass.updateData(ids)
 	    }
 	}); 
-	
-	/*$.get(url, data, function(ids) {
-		outerClass.updateData(ids)
-	});*/
 }
 
 EditManager.prototype.updateData = function updateData(ids) {
@@ -119,8 +117,7 @@ EditManager.prototype.updateData = function updateData(ids) {
 		var newArray = []
 		for(var key in array){
 			newArray.push(array[key])
-		}
-		
+		}		
 		return newArray
 	}
 	
@@ -181,8 +178,4 @@ EditManager.prototype.deleteData = function deleteData() {
 			window.location.href = "/";		
 	    }
 	});
-	
-	/*$.get(url, data, function(result) {
-		window.location.href = "http://localhost:8181/Search";
-	});	*/
 }

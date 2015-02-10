@@ -21,13 +21,13 @@
       <form class="form-signin" action="/login" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>         
                       
-        <input type="email" id="username" name="username" class="form-control" placeholder="Email" required autofocus>
-        
+        <input type="email" id="username" name="username" class="form-control" placeholder="Email" required autofocus>        
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         
-        <a href="/viewRegister" id='reg'>Register</a>
+        <a href="/viewRegister" id='reg' class='links'>Register</a>
+        <a href="/forgotPassword" id='viewForgot' class='links'>Forgot password?</a>
         
       </form>
 

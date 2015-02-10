@@ -23,6 +23,7 @@
         <input type="email" id="username" class="form-control" placeholder="Email" required autofocus>
         
         <a href='' class="btn btn-lg btn-primary btn-block" id='forgot'>Send Password to Email</a>
+        <a href='/login' class="btn btn-lg btn-primary btn-block">Cancel</a>
         
       </div>
 

@@ -90,50 +90,22 @@
 							placeholder="Last Name">
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default changeButton" id="changeButtonCustomer">Save Changes</button>
-						<button type="button" class="btn btn-default cancelButton">Cancel</button>	
-					</div>
-				</div>
 			</div>
-
 			<div id='emailData' class="form-horizontal tabData">
 				<div class="col-sm-12" id="addDivEmail">
 					<span class="badge add addData" id="addEmail">add</span>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default changeButton" id="changeButtonEmail">Save
-							Changes</button>
-					</div>
-				</div>
 			</div>
-
 			<div id='phoneData' class="form-horizontal tabData">
 				<div class="col-sm-12" id="addDivPhoneNumber">
 					<span class="badge add addData" id="addPhoneNumber">add</span>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default changeButton" id="changeButtonPhoneNumber">Save
-							Changes</button>
-					</div>
-				</div>
 			</div>
-
 			<div id='addressData' class="form-horizontal tabData">
 				<div class="col-sm-12" id="addDivAddress">
 					<span class="badge add addData" id="addAddress">add</span>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default changeButton" id="changeButtonAddress">Save
-							Changes</button>
-					</div>
-				</div>
 			</div>
-
 		</div>
 
 	</div>

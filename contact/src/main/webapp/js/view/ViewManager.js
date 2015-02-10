@@ -7,6 +7,29 @@ var ViewManager = function ViewManager(bottomsToHide, invalidInputs) {
 }
 
 ViewManager.prototype
+	.addChangeButtons = function addChangeButtons(addDelete){
+	
+	var dataTabs = ['#nameData', '#emailData', '#phoneData', '#addressData']
+	
+	var buttons = 	
+		'<div class="form-group">'
+			+'<div class="col-sm-offset-2 col-sm-10">'
+				+'<button type="submit" class="btn btn-default changeButton" id="changeButtonCustomer">Save</button>'
+				
+	if(addDelete){
+		buttons += '<button type="button" class="btn btn-default deleteButton">Delete</button>'					
+	}	
+				
+	buttons += 	'<a href="/" type="button" class="btn btn-default">Cancel</a>'
+			+'</div>'
+		+'</div>'
+		
+	for(var dataTab in dataTabs){
+		$(dataTabs[dataTab]).append(buttons)
+	}
+} 
+
+ViewManager.prototype
 	.addForm = function addForm(newDataKey, components, type, populate){	
 		
 	$('#addDiv' + formatString(type)).before(
