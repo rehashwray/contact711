@@ -19,7 +19,7 @@ public class Db {
 	    DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 	    
 	    driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-	    driverManagerDataSource.setUrl(SystemCredentials.getUrl());
+	    driverManagerDataSource.setUrl(SystemCredentials.getDbUrl());
 	    driverManagerDataSource.setUsername(SystemCredentials.getUser());
 	    driverManagerDataSource.setPassword(SystemCredentials.getPassword());
 	    

@@ -17,7 +17,7 @@ public class DbUtilities {
 	public static Connection openDatabase() throws SQLException {
 
 		return DriverManager.getConnection(
-				SystemCredentials.getUrl(), 
+				SystemCredentials.getDbUrl(), 
 				SystemCredentials.getUser(), 
 				SystemCredentials.getPassword());
 	}
