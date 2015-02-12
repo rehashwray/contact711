@@ -1,14 +1,20 @@
 
 var AccountManager = function AccountManager(path, userId){
-	
-	var invalidInputs = {
-			'#username1' : true, 
-			'#username2' : true, 
-			'#password1' : true, 
-			'#password2' : true			
+
+	var invalidInputs = {}
+	var buttonsToHide = ['#send']
+	if (userId == undefined) {
+		var invalidInputs = {
+			'#username1' : true,
+			'#username2' : true,
+			'#password1' : true,
+			'#password2' : true
+		}
+		
+		this.viewManager = new ViewManager(buttonsToHide, invalidInputs)
+		this.viewManager.hideButtons()
 	}
-	this.viewManager = new ViewManager(['#send'], invalidInputs)
-	this.viewManager.hideButtons()
+	this.viewManager = new ViewManager(buttonsToHide, invalidInputs)
 	
 	this.uniqueEmail = 'unknow'	
 	this.path = path

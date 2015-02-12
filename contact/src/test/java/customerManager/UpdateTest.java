@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import tableModel.Customer;
 import tableModel.CustomerAddress;
@@ -57,7 +58,7 @@ public class UpdateTest {
 		}
     }
 	
-    //@Test
+    @Test
 	public void testUpdateCustomer() throws DbException {
 				
 		String query = "select count(*) from customers "
@@ -82,7 +83,7 @@ public class UpdateTest {
 		rtd.add(new Record("customers", "customer_id", customerId));
 	}
 
-	//@Test
+	@Test
 	public void testUpdateCustomerEmails() throws DbException {
 
 		String query = "select count(*) from customers_emails "
@@ -119,7 +120,7 @@ public class UpdateTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void testUpdateCustomerPhoneNumbers() throws DbException {
 
 		String query = "select count(*) from customers_phone_numbers "
@@ -157,7 +158,7 @@ public class UpdateTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void testUpdateCustomerAddresses() throws DbException {
 
 		String query = "select count(*) from customers_addresses "

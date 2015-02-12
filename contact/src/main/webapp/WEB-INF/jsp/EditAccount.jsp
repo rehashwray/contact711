@@ -96,7 +96,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<a href='' class="btn btn-default" id='send'>Save Changes</a>
-					<a href='/DeleteAccount' class="btn btn-default" id='delete'>Delete</a>
+					<a href='/DeleteAccount' class="btn btn-default user" id='delete'>Delete</a>
 					<a href='/' class="btn btn-default" id='cancel'>Cancel</a>									
 				</div>
 			</div>

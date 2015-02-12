@@ -1,23 +1,18 @@
 package customerManager;
 
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import tableModel.Customer;
 import tableModel.CustomerAddress;
 import tableModel.CustomerEmail;
 import tableModel.CustomerPhoneNumber;
-import tableModel.CustomerProfile;
 import customerProfileManager.Add;
 import db.DbException;
 import db.DbExistance;
@@ -62,7 +57,6 @@ public class AddTest {
 		}
     }
 	
-    @Ignore
 	@Test
 	public void testAddCustomer() throws DbException {
 				
@@ -81,7 +75,6 @@ public class AddTest {
 		rtd.add(new Record("customers", "customer_id", customerId));
 	}
 
-    @Ignore
 	@Test
 	public void testAddCustomerEmails() throws DbException {
 		
@@ -109,7 +102,6 @@ public class AddTest {
 		}
 	}
 
-    @Ignore
 	@Test
 	public void testAddCustomerPhoneNumbers() throws DbException {
 		
@@ -138,7 +130,6 @@ public class AddTest {
 		}
 	}
 
-    //@Ignore
 	@Test
 	public void testAddCustomerAddresses() throws DbException {
 
@@ -164,37 +155,5 @@ public class AddTest {
 			rtd.add(new Record("customers_addresses", 
 					"address_id", addressIds.get(customerAddressesKey)));
 		}
-	}
-	
-    @Ignore
-	@Test
-	public void testAddCustomerProfile() {;
-
-		add = mock(Add.class);
-		
-		Customer customer = new Customer(1, 1, "john", "bach");
-		
-		HashMap<Integer, CustomerEmail> customerEmails = new HashMap<Integer, CustomerEmail>();
-		CustomerEmail customerEmail = new CustomerEmail(1, 1, "m@d.c");
-		customerEmails.put(1, customerEmail);
-
-		HashMap<Integer, CustomerPhoneNumber> customerPhoneNumbers = new HashMap<Integer, CustomerPhoneNumber>();
-		CustomerPhoneNumber customerPhoneNumber = new CustomerPhoneNumber(1, 1, "324-33");
-		customerPhoneNumbers.put(1, customerPhoneNumber);		
-		
-		HashMap<Integer, CustomerAddress> customerAddresses = new HashMap<Integer, CustomerAddress>();
-		CustomerAddress customerAddress = new CustomerAddress(1, 1, null, null, null, null);
-		customerAddresses.put(1, customerAddress);
-		
-		CustomerProfile customerProfile = new CustomerProfile();
-		customerProfile.setCustomer(customer);
-		customerProfile.setCustomerEmails(customerEmails);
-		customerProfile.setCustomerPhoneNumbers(customerPhoneNumbers);
-		customerProfile.setCustomerAddresses(customerAddresses);
-		
-		when(add.addCustomer(any(Customer.class))).thenReturn(1);								
-		when(add.addCustomerEmails(customerEmails)).thenReturn(null);										
-		
-		assertTrue(false);
 	}
 }

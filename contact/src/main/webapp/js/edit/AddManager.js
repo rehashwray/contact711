@@ -16,6 +16,8 @@ AddManager.prototype.initialize = function initialize(customerProfile){
 	this.phoneNumbersManager = new NewDataManager([0], 'phone_numbers')
 	this.addressesManager = new NewDataManager([0], 'addresses')
 		
+	this.viewManager.addChangeButtons(false)
+	
 	this.addData("#addEmail")
 	this.addData("#addPhoneNumber")
 	this.addData("#addAddress")
@@ -27,9 +29,7 @@ AddManager.prototype.initialize = function initialize(customerProfile){
 	this.viewManager.removeDelete('PhoneNumber', allKeys.pop())
 	
 	allKeys = this.addressesManager.getAllDataKeys() 
-	this.viewManager.removeDelete('Address', allKeys.pop())
-	
-	this.viewManager.addChangeButtons(false)
+	this.viewManager.removeDelete('Address', allKeys.pop())	
 }
 
 AddManager.prototype.tab = function tab(domElement){
