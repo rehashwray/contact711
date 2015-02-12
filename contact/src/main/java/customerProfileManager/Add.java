@@ -61,9 +61,7 @@ public class Add {
 			Integer result = dbUpdate.updateDb(
 					query, parameters, "customer_id");		
 			
-			if(result != null){
-				this.customer_id = result;
-			}
+			this.customer_id = result;			
 		} catch (DbException e) {
 			Log.logError(e);
 		}
@@ -159,9 +157,7 @@ public class Add {
 			try {
 				Integer addressId = dbUpdate.updateDb(query, parameters, "address_id");
 
-				if(addressId != null){
-					customerAddressesIds.put(customerAddress.getAddress_id(), addressId);
-				}
+				customerAddressesIds.put(customerAddress.getAddress_id(), addressId);				
 			} catch (DbException e) {
 				Log.logError(e);
 			}

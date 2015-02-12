@@ -1,6 +1,7 @@
 package customerManager;
 
 public class Record{
+	
 	private String table = null;
 	private String idName = null;
 	private Integer idValue = null;

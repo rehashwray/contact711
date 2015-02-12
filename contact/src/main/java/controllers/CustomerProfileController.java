@@ -17,17 +17,17 @@ import com.google.common.collect.Lists;
 
 import customerProfileManager.Add;
 import customerProfileManager.Delete;
+import customerProfileManager.DeleteProfile;
 import customerProfileManager.PrimaryKeys;
 import customerProfileManager.Update;
 import db.DbAccount;
 import db.DbException;
-import error.ErrorHandler;
 import error.Log;
 
 @Controller
 public class CustomerProfileController extends ErrorHandler  {
 
-	@RequestMapping(value = { "/AddCustomer" }, method = RequestMethod.GET)//should change other to post
+	@RequestMapping(value = { "/AddCustomer" }, method = RequestMethod.GET)
 	public String addCustomerProfile() {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
@@ -47,21 +47,22 @@ public class CustomerProfileController extends ErrorHandler  {
 			@RequestParam("customerProfileAdd") 
 			String customerProfileAddJson) {
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		Authentication auth = SecurityContextHolder
+				.getContext().getAuthentication();		
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		
 		String role = userDetail.getAuthorities().toArray()[0].toString();	
 		if(role.equalsIgnoreCase("ROLE_ADMIN")){
 			return "redirect:/SystemLogs";
 		}
-		
-		String username = userDetail.getUsername();		
-		
+				
 		Integer user_id = null;
 		try {
+			String username = userDetail.getUsername();				
 			user_id = new DbAccount().getUserId(username);
 		} catch (DbException e) {
 			Log.logError(e);
+			return "failed";
 		}
 		
 		String result = "ok";		
@@ -81,13 +82,15 @@ public class CustomerProfileController extends ErrorHandler  {
 			result = "failed";
 			Log.logError(e);
 		}		
-        return result;
+
+		return result;
 	}
 	
 	@RequestMapping(value = { "/ViewCustomer" }, method = RequestMethod.GET)
 	public String viewCustomer() {		
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		Authentication auth = SecurityContextHolder
+				.getContext().getAuthentication();		
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		
 		String role = userDetail.getAuthorities().toArray()[0].toString();	
@@ -108,7 +111,8 @@ public class CustomerProfileController extends ErrorHandler  {
 			@RequestParam("customerProfileDelete") 
 			String customerProfileDeleteJson) {
 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		Authentication auth = SecurityContextHolder
+				.getContext().getAuthentication();		
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		
 		String role = userDetail.getAuthorities().toArray()[0].toString();	
@@ -143,6 +147,7 @@ public class CustomerProfileController extends ErrorHandler  {
 		} 
 		catch (Exception e) {
 			Log.logError(e);
+			primaryKeys = null;
 		}
 		
         return primaryKeys;
@@ -153,7 +158,8 @@ public class CustomerProfileController extends ErrorHandler  {
 	public String deleteCustomerProfile(
 			@RequestParam("customer") String customerJson) {
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		Authentication auth = SecurityContextHolder
+				.getContext().getAuthentication();		
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		
 		String role = userDetail.getAuthorities().toArray()[0].toString();	
@@ -161,19 +167,16 @@ public class CustomerProfileController extends ErrorHandler  {
 			return "redirect:/SystemLogs";
 		}
 		
-		Customer customer = null;
-
-		String result = "ok";
 		try {			
-			customer = new ObjectMapper().readValue(
+			Customer customer = new ObjectMapper().readValue(
 					customerJson, Customer.class);
 			
-			result = new Delete().deleteCustomers(Lists.newArrayList(customer.getCustomer_idDecripted()));
+			new DeleteProfile().deleteCustomerProfiles(Lists.newArrayList(
+					customer.getCustomer_idDecripted()));
 		} catch (Exception e) {
 			Log.logError(e);
-			result = "failed";
 		}		
         
-		return result;
+		return "done";
 	}
 }

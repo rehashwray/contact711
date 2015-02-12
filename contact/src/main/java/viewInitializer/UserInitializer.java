@@ -12,8 +12,8 @@ import tableModel.UserProfile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import controllers.ErrorHandler;
 import db.DbAccount;
-import error.ErrorHandler;
 import error.Log;
 
 public class UserInitializer extends ErrorHandler {

@@ -21,7 +21,8 @@ public class DbUpdate {
 		}
 
 		Integer id = null;
-		PreparedStatement statement = DbUtilities.prepareStatement(connection, query, parameters);
+		PreparedStatement statement = DbUtilities.prepareStatement(
+				connection, query, parameters);
 		try {
 			try {
 				statement.executeUpdate();
@@ -43,7 +44,7 @@ public class DbUpdate {
 		} catch (SQLException e) {
 					
 			DbException dbe = new DbException(e.getMessage());
-			dbe.setExecutingStatement();//and rolling back transaction
+			dbe.setExecutingStatement();
 			throw dbe;
 		} finally {
 			try {

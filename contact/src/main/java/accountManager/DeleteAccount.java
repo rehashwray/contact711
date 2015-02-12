@@ -2,7 +2,7 @@ package accountManager;
 
 import java.util.ArrayList;
 
-import customerProfileManager.Delete;
+import customerProfileManager.DeleteProfile;
 import db.DbCustomers;
 import db.DbException;
 import db.DbUpdate;
@@ -11,13 +11,12 @@ import error.Log;
 public class DeleteAccount {
 
 	protected DbUpdate dbUpdate = new DbUpdate();
-	protected Integer user_id = null;
 	
 	public DeleteAccount(){}
 	
 	public void deleteAccount(String username){
 		try {
-			new Delete().deleteCustomers(
+			new DeleteProfile().deleteCustomerProfiles(
 					new DbCustomers().getCustomerIds(username));
 			
 			Integer userId = deleteUser(username);

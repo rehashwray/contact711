@@ -17,7 +17,6 @@ import accountManager.UpdateAccount;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import error.ErrorHandler;
 import error.Log;
 
 @Controller

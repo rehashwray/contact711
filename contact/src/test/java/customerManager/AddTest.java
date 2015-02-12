@@ -7,7 +7,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,8 +20,8 @@ import tableModel.CustomerPhoneNumber;
 import tableModel.CustomerProfile;
 import customerProfileManager.Add;
 import db.DbException;
-import db.DbUpdate;
 import db.DbExistance;
+import db.DbUpdate;
 
 public class AddTest {
 	
@@ -60,7 +59,6 @@ public class AddTest {
 			parameters.add(record.getIdValue());
 
 			dbUpdate.updateDb(query, parameters, "customer_id");			
-			//assertFalse(existance.exist(query, parameters));
 		}
     }
 	
@@ -68,9 +66,7 @@ public class AddTest {
 	@Test
 	public void testAddCustomer() throws DbException {
 				
-		String query = "select count(*) from customers "
-				+ "where customer_name = ? and last_name = ? "
-				+ "and customer_id = ? ";
+		String query = "select count(*) from customers where customer_id = ? ";
 				
 		Customer customer = new Customer(customerId, -1, "marvin", "cas");	
 		
@@ -78,8 +74,6 @@ public class AddTest {
 		
 		ArrayList<Object> parameters = new ArrayList<Object>();
 
-		parameters.add(customer.getCustomer_name());
-		parameters.add(customer.getLast_name());
 		parameters.add(customerId);
 		
 		assertTrue(existance.exist(query, parameters));
@@ -91,8 +85,7 @@ public class AddTest {
 	@Test
 	public void testAddCustomerEmails() throws DbException {
 		
-		String query = "select count(*) from customers_emails "
-				+ "where email_id = ? and email = ? ";
+		String query = "select count(*) from customers_emails where email_id = ?";
 				
 		HashMap<Integer, CustomerEmail> 
 			customerEmails = new HashMap<Integer, CustomerEmail>();	
@@ -103,15 +96,11 @@ public class AddTest {
 		
 		HashMap<Integer, Integer> emailIds = add.addCustomerEmails(customerEmails);
 		
-		Set<Integer> customerEmailsKeys = customerEmails.keySet();		
-		for(Integer customerEmailKey : customerEmailsKeys){
-		
-			CustomerEmail customerEmail = customerEmails.get(customerEmailKey);
-			
+		for(Integer customerEmailKey : customerEmails.keySet()){
+					
 			ArrayList<Object> parameters = new ArrayList<Object>();
 
 			parameters.add(emailIds.get(customerEmailKey));
-			parameters.add(customerEmail.getEmail());
 
 			assertTrue(existance.exist(query, parameters));
 
@@ -124,8 +113,7 @@ public class AddTest {
 	@Test
 	public void testAddCustomerPhoneNumbers() throws DbException {
 		
-		String query = "select count(*) from customers_phone_numbers "
-				+ "where phone_number_id = ? and phone_number = ? ";
+		String query = "select count(*) from customers_phone_numbers where phone_number_id = ?";
 				
 		HashMap<Integer, CustomerPhoneNumber> 
 			customerPhoneNumbers = new HashMap<Integer, CustomerPhoneNumber>();	
@@ -134,18 +122,14 @@ public class AddTest {
 		customerPhoneNumbers.put(2, new CustomerPhoneNumber(customerId, 2, "3-3"));
 		customerPhoneNumbers.put(3, new CustomerPhoneNumber(customerId, 3, "33-4-3-3"));
 		
-		HashMap<Integer, Integer> phoneNumberIds = add.addCustomerPhoneNumbers(customerPhoneNumbers);
-		
-		Set<Integer> customerPhoneNumbersKeys = customerPhoneNumbers.keySet();
-		
-		for(Integer customerPhoneNumberKey : customerPhoneNumbersKeys){
-		
-			CustomerPhoneNumber customerPhoneNumber = customerPhoneNumbers.get(customerPhoneNumberKey);
-			
+		HashMap<Integer, Integer> phoneNumberIds = add
+				.addCustomerPhoneNumbers(customerPhoneNumbers);
+				
+		for(Integer customerPhoneNumberKey : customerPhoneNumbers.keySet()){
+					
 			ArrayList<Object> parameters = new ArrayList<Object>();
 
 			parameters.add(phoneNumberIds.get(customerPhoneNumberKey));
-			parameters.add(customerPhoneNumber.getPhone_number());
 
 			assertTrue(existance.exist(query, parameters));
 
@@ -154,13 +138,11 @@ public class AddTest {
 		}
 	}
 
-    @Ignore
+    //@Ignore
 	@Test
 	public void testAddCustomerAddresses() throws DbException {
 
-		String query = "select count(*) from customers_addresses "
-				+ "where address_id = ? and street = ? and city = ? "
-				+ "and state = ? and zip_code = ? ";
+		String query = "select count(*) from customers_addresses where address_id = ?";
 				
 		HashMap<Integer, CustomerAddress> 
 			customerAddresses = new HashMap<Integer, CustomerAddress>();	
@@ -171,19 +153,11 @@ public class AddTest {
 		
 		HashMap<Integer, Integer> addressIds = add.addCustomerAddresses(customerAddresses);
 		
-		Set<Integer> customerAddressesKeys = customerAddresses.keySet();
-		
-		for(Integer customerAddressesKey : customerAddressesKeys){
-		
-			CustomerAddress customerAddress = customerAddresses.get(customerAddressesKey);
-			
+		for(Integer customerAddressesKey : customerAddresses.keySet()){
+					
 			ArrayList<Object> parameters = new ArrayList<Object>();
 
 			parameters.add(addressIds.get(customerAddressesKey));
-			parameters.add(customerAddress.getStreet());
-			parameters.add(customerAddress.getCity());
-			parameters.add(customerAddress.getState());
-			parameters.add(customerAddress.getZip_code());
 
 			assertTrue(existance.exist(query, parameters));
 
@@ -192,6 +166,7 @@ public class AddTest {
 		}
 	}
 	
+    @Ignore
 	@Test
 	public void testAddCustomerProfile() {;
 

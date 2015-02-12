@@ -1,6 +1,6 @@
 package customerManager;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +8,6 @@ import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
-
-import tableModel.Customer;
 import tableModel.CustomerAddress;
 import tableModel.CustomerEmail;
 import tableModel.CustomerPhoneNumber;
@@ -35,34 +32,12 @@ public class DeleteTest {
 		
 		existance = new DbExistance();
 	}
-
-	//@Test
-	public void testDeleteCustomer() throws DbException {
-
-		String query = "select count(*) from customers "
-				+ "where customer_name = ? and last_name = ? "
-				+ "and customer_id = ? ";
-				
-		Customer customer = new Customer(-1, -1, "marvin", "cas");			
-		Integer customerId = add.addCustomer(customer);
-		
-		customer = new Customer(-1, customerId, "mar", "c");
-		delete.deleteCustomers(Lists.newArrayList(customer.getCustomer_idDecripted()));
-				
-		ArrayList<Object> parameters = new ArrayList<Object>();
-
-		parameters.add(customer.getCustomer_name());
-		parameters.add(customer.getLast_name());
-		parameters.add(customer.getCustomer_idDecripted());
-		
-		assertFalse(existance.exist(query, parameters));
-	}
-
-	//@Test
+	
+	@Test
 	public void testDeleteCustomerEmails() throws DbException {
 		
 		String query = "select count(*) from customers_emails "
-				+ "where email_id = ? and email = ? ";
+				+ "where email_id = ?";
 				
 		HashMap<Integer, CustomerEmail> 
 			customerEmails = new HashMap<Integer, CustomerEmail>();	
@@ -81,13 +56,10 @@ public class DeleteTest {
 		delete.deleteCustomerEmails(customerEmails);
 		
 		for(Integer customerEmailKey : customerEmails.keySet()){
-		
-			CustomerEmail customerEmail = customerEmails.get(customerEmailKey);
-			
+					
 			ArrayList<Object> parameters = new ArrayList<Object>();
 
 			parameters.add(customerEmailKey);
-			parameters.add(customerEmail.getEmail());
 
 			assertFalse(existance.exist(query, parameters));
 		}
@@ -97,7 +69,7 @@ public class DeleteTest {
 	public void testDeleteCustomerPhoneNumbers() throws DbException {
 
 		String query = "select count(*) from customers_phone_numbers "
-				+ "where phone_number_id = ? and phone_number = ? ";
+				+ "where phone_number_id = ?";
 				
 		HashMap<Integer, CustomerPhoneNumber> 
 			customerPhoneNumbers = new HashMap<Integer, CustomerPhoneNumber>();	
@@ -115,13 +87,10 @@ public class DeleteTest {
 		delete.deleteCustomerPhoneNumbers(customerPhoneNumbers);
 		
 		for(Integer customerPhoneNumberKey : customerPhoneNumbers.keySet()){
-		
-			CustomerPhoneNumber customerPhoneNumber = customerPhoneNumbers.get(customerPhoneNumberKey);
-			
+					
 			ArrayList<Object> parameters = new ArrayList<Object>();
 
 			parameters.add(customerPhoneNumberKey);
-			parameters.add(customerPhoneNumber.getPhone_number());
 
 			assertFalse(existance.exist(query, parameters));
 		}
@@ -131,8 +100,7 @@ public class DeleteTest {
 	public void testDeleteCustomerAddresses() throws DbException {
 
 		String query = "select count(*) from customers_addresses "
-				+ "where address_id = ? and street = ? and city = ? "
-				+ "and state = ? and zip_code = ? ";
+				+ "where address_id = ?";
 				
 		HashMap<Integer, CustomerAddress> 
 			customerAddresses = new HashMap<Integer, CustomerAddress>();	
@@ -150,23 +118,12 @@ public class DeleteTest {
 		delete.deleteCustomerAddresses(customerAddresses);
 		
 		for(Integer customerAddressesKey : customerAddresses.keySet()){
-		
-			CustomerAddress customerAddress = customerAddresses.get(customerAddressesKey);
-			
+					
 			ArrayList<Object> parameters = new ArrayList<Object>();
 
 			parameters.add(customerAddressesKey);
-			parameters.add(customerAddress.getStreet());
-			parameters.add(customerAddress.getCity());
-			parameters.add(customerAddress.getState());
-			parameters.add(customerAddress.getZip_code());
 
 			assertFalse(existance.exist(query, parameters));
 		}
-	}
-	
-	@Test
-	public void testDeleteCustomerProfile() {
-		fail("Not yet implemented");
 	}
 }

@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="viewInitializer.CustomerProfileInitializer"%>
+<%@page import="viewInitializer.ViewCustomerInitializer"%>
 <%
-	String json = CustomerProfileInitializer.initialize(request);	
+	String json = ViewCustomerInitializer.initialize(request);
 %>
 <html lang="en">
 <head>

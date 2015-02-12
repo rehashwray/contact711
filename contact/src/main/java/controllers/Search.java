@@ -15,7 +15,6 @@ import search.SearchResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import db.DbCustomers;
-import error.ErrorHandler;
 import error.Log;
 
 @Controller

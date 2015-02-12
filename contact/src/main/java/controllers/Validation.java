@@ -16,11 +16,10 @@ import validation.ValidateDataMember;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import error.ErrorHandler;
 import error.Log;
 
 @Controller//change to rest controller
-public class Validate extends ErrorHandler {
+public class Validation extends ErrorHandler {
 
 	@RequestMapping(value = { "/validate" }, method = RequestMethod.GET)
 	@ResponseBody

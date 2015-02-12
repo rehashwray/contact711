@@ -12,11 +12,11 @@ import tableModel.CustomerProfile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import controllers.ErrorHandler;
 import db.DbCustomers;
-import error.ErrorHandler;
 import error.Log;
 
-public class CustomerProfileInitializer extends ErrorHandler {
+public class ViewCustomerInitializer extends ErrorHandler {
 
 	public static String initialize(HttpServletRequest request) {
 

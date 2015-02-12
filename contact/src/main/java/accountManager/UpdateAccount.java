@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import db.DbException;
 import db.DbUpdate;
+import error.Log;
 import tableModel.User;
 
 public class UpdateAccount {
@@ -28,7 +29,7 @@ public class UpdateAccount {
 		try {
 			dbUpdate.updateDb(queryUser, parametersUser, "user_id");
 		} catch (DbException e) {
-		
+			Log.logError(e);			
 		}
 	}
 }
