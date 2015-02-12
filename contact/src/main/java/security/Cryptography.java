@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import administrator.SystemCredentials;
+import admin.SystemCredentials;
 
 public class Cryptography {
 

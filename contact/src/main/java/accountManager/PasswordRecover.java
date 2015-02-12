@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import administrator.SystemCredentials;
+import admin.SystemCredentials;
 
 import com.google.common.collect.ImmutableMap;
 
