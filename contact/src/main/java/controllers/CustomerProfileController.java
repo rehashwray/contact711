@@ -1,6 +1,5 @@
 package controllers;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +17,10 @@ import com.google.common.collect.Lists;
 
 import customerProfileManager.Add;
 import customerProfileManager.Delete;
-import customerProfileManager.Update;
 import customerProfileManager.PrimaryKeys;
-import db.DbException;
+import customerProfileManager.Update;
 import db.DbAccount;
+import db.DbException;
 import error.ErrorHandler;
 import error.Log;
 
@@ -30,6 +29,14 @@ public class CustomerProfileController extends ErrorHandler  {
 
 	@RequestMapping(value = { "/AddCustomer" }, method = RequestMethod.GET)//should change other to post
 	public String addCustomerProfile() {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(role.equalsIgnoreCase("ROLE_ADMIN")){
+			return "redirect:/SystemLogs";
+		}
 		
 		return "AddCustomer";
 	}
@@ -40,18 +47,21 @@ public class CustomerProfileController extends ErrorHandler  {
 			@RequestParam("customerProfileAdd") 
 			String customerProfileAddJson) {
 		
-		String username = null;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-			username = userDetail.getUsername();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(role.equalsIgnoreCase("ROLE_ADMIN")){
+			return "redirect:/SystemLogs";
 		}
+		
+		String username = userDetail.getUsername();		
 		
 		Integer user_id = null;
 		try {
 			user_id = new DbAccount().getUserId(username);
 		} catch (DbException e) {
-
+			Log.logError(e);
 		}
 		
 		String result = "ok";		
@@ -69,15 +79,21 @@ public class CustomerProfileController extends ErrorHandler  {
 			}
 		}catch (Exception e) {
 			result = "failed";
-
 			Log.logError(e);
-		}
-		
+		}		
         return result;
 	}
 	
 	@RequestMapping(value = { "/ViewCustomer" }, method = RequestMethod.GET)
 	public String viewCustomer() {		
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(role.equalsIgnoreCase("ROLE_ADMIN")){
+			return "redirect:/SystemLogs";
+		}
 		
 		return "ViewCustomer";
 	}
@@ -91,6 +107,14 @@ public class CustomerProfileController extends ErrorHandler  {
 			String customerProfileUpdateJson,
 			@RequestParam("customerProfileDelete") 
 			String customerProfileDeleteJson) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(role.equalsIgnoreCase("ROLE_ADMIN")){
+			return null;
+		}
 		
 		CustomerProfile customerProfileAdd = null;
 		CustomerProfile customerProfileUpdate = null;
@@ -116,7 +140,8 @@ public class CustomerProfileController extends ErrorHandler  {
 			
 			new Delete()
 				.deleteCustomerProfile(customerProfileDelete);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			Log.logError(e);
 		}
 		
@@ -127,6 +152,14 @@ public class CustomerProfileController extends ErrorHandler  {
 	@ResponseBody
 	public String deleteCustomerProfile(
 			@RequestParam("customer") String customerJson) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(role.equalsIgnoreCase("ROLE_ADMIN")){
+			return "redirect:/SystemLogs";
+		}
 		
 		Customer customer = null;
 
@@ -139,8 +172,8 @@ public class CustomerProfileController extends ErrorHandler  {
 		} catch (Exception e) {
 			Log.logError(e);
 			result = "failed";
-		}
-		
-        return result;
+		}		
+        
+		return result;
 	}
 }

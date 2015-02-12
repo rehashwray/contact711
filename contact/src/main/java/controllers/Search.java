@@ -1,6 +1,5 @@
 package controllers;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +24,13 @@ public class Search extends ErrorHandler {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String home() {
 		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(role.equalsIgnoreCase("ROLE_ADMIN")){
+			return "redirect:/SystemLogs";
+		}		
 		return "Search";
 	}
 	
@@ -33,12 +39,15 @@ public class Search extends ErrorHandler {
 	public SearchResult search(
 			@RequestParam("sqpJson") String sqpJson) {
 		
-		String username = null;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();		
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-			username = userDetail.getUsername();
-		}		
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		
+		String role = userDetail.getAuthorities().toArray()[0].toString();	
+		if(!role.equalsIgnoreCase("ROLE_USER")){
+			return null;
+		}
+		
+		String username = userDetail.getUsername();		
 		
 		SearchResult searchResult = new SearchResult(0, null);
 		try {
@@ -46,9 +55,8 @@ public class Search extends ErrorHandler {
 			
 			searchResult = (new DbCustomers()).searchCustomers(username, sqp);						
 		} catch (Exception e) {
-			Log.logError(e);			
-		};				
-		
+			Log.logError(e);
+		}						
 		return searchResult;
 	}
 }

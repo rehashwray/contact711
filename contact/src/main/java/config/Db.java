@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import db.DbCredentials;
+import administrator.SystemCredentials;
 
 @EnableAutoConfiguration
 @Configuration
@@ -19,9 +19,9 @@ public class Db {
 	    DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 	    
 	    driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-	    driverManagerDataSource.setUrl(DbCredentials.getUrl());
-	    driverManagerDataSource.setUsername(DbCredentials.getUser());
-	    driverManagerDataSource.setPassword(DbCredentials.getPassword());
+	    driverManagerDataSource.setUrl(SystemCredentials.getUrl());
+	    driverManagerDataSource.setUsername(SystemCredentials.getUser());
+	    driverManagerDataSource.setPassword(SystemCredentials.getPassword());
 	    
 	    return driverManagerDataSource;
 	}

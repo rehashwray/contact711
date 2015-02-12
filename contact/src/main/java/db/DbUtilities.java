@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import administrator.SystemCredentials;
 import error.Log;
 
 public class DbUtilities {
@@ -16,9 +17,9 @@ public class DbUtilities {
 	public static Connection openDatabase() throws SQLException {
 
 		return DriverManager.getConnection(
-				DbCredentials.getUrl(), 
-				DbCredentials.getUser(), 
-				DbCredentials.getPassword());
+				SystemCredentials.getUrl(), 
+				SystemCredentials.getUser(), 
+				SystemCredentials.getPassword());
 	}
 	
 	public static PreparedStatement prepareStatement(

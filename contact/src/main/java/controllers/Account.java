@@ -41,9 +41,8 @@ public class Account extends ErrorHandler {
 			userAddManager.addAccount(user);
 		} catch (Exception e) {
 			Log.logError(e);
-		}
-		
-		return "Login";
+		}		
+        return "redirect:loging";
 	}	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -64,7 +63,7 @@ public class Account extends ErrorHandler {
 		
 		PasswordRecover.recoverPassword(username);
 		
-		return "redirect:login";
+        return "redirect:loging";
 	}
 	
 	@RequestMapping(value = { "/EditAccount" }, method = RequestMethod.GET)

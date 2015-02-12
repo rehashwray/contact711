@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 
 public class Log {
 
-	private static File logFile = new File("ControllerLog.txt");
+	private static File logFile = new File("ErrorsLog.txt");
 
 	public static void logError(Throwable error) {
 

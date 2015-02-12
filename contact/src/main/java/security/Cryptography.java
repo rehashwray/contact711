@@ -4,8 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -15,9 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import db.DbException;
-import db.DbSystemCredentials;
-import error.Log;
+import administrator.SystemCredentials;
 
 public class Cryptography {
 
@@ -30,20 +26,8 @@ public class Cryptography {
 
 	private static void initialize() {
 
-		ArrayList<Object> parameters = new ArrayList<Object>();
-		parameters.add("skey");
-		parameters.add("ivx");
-
-		HashMap<String, String> credentials = null;
-		try {
-			credentials = DbSystemCredentials.getCredentials(parameters);
-		} catch (DbException e) {
-			Log.logError(e);
-			return;
-		}
-
-		skey = credentials.get("skey");
-		ivx = credentials.get("ivx");
+		skey = SystemCredentials.getSecurityKey();
+		ivx = SystemCredentials.getSecurityKey();
 	}
 
 	public static String encrypt(String data) throws CryptographyException,

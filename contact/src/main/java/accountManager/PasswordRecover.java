@@ -1,7 +1,6 @@
 package accountManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -10,9 +9,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import administrator.SystemCredentials;
+
+import com.google.common.collect.ImmutableMap;
+
 import db.DbAccount;
 import db.DbException;
-import db.DbSystemCredentials;
 import error.Log;
 
 public class PasswordRecover {
@@ -32,13 +34,8 @@ public class PasswordRecover {
 		parameters.add("emailAddress");
 		parameters.add("emailPassword");
 
-		HashMap<String, String> credentials = null;
-		try {
-			credentials = DbSystemCredentials.getCredentials(parameters);
-		} catch (DbException e) {
-			Log.logError(e);
-			return;
-		}
+		ImmutableMap<String, String> credentials = null;		
+		credentials = SystemCredentials.getEmailCredentials();		
 
 		String subject = "Password";
 		String body = "Password: " + password;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Search</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />

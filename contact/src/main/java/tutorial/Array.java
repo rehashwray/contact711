@@ -14,7 +14,7 @@ public class Array {
 		int i2 = i1;
 		
 		ArrayList<Object> l = new ArrayList<Object>();
-		l.add("stringdd");
+		l.add("stridd");
 		l.add(3);
 		
 		

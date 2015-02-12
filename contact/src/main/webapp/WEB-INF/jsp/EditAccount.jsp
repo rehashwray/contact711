@@ -2,8 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import = "viewInitializer.UserInitializer"%>
+
 <% 
-	String json = UserInitializer.initialize();
+	String userProfile = UserInitializer.initialize();
 %>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../favicon.ico">
 
-<title>Account</title>
+<title>Edit Account</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,15 +41,17 @@
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
 				</button>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/">Search</a></li>
-					<li><a href="/AddCustomer">Add Customer</a></li>
+					<li><a href="/" class="user">Search</a></li>
+					<li><a href="/AddCustomer" class="user">Add Customer</a></li>
+					<li><a href="/ViewErrors" class="admin">System Logs</a></li>										
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="#">Edit Account</a></li>
@@ -116,10 +119,21 @@
 		var account = null
 		$(				
 			function(){
-				var user = <%=json%>
+				var userProfile = <%=userProfile%>
 
-				if(user == null)
-					window.location.href = "/";		
+				if(userProfile == null)
+					window.location.href = "/";
+				
+				if(userProfile.role == 'ROLE_ADMIN'){
+					$('.admin').show()
+					$('.user').hide()					
+				}
+				else{
+					$('.admin').hide()
+					$('.user').show()					
+				}
+				
+				var user = userProfile.user
 				
 				$('#username1').val(user.username)
 				$('#username2').val(user.username)
