@@ -5,8 +5,8 @@ import com.google.common.collect.ImmutableMap;
 public class CopyOfSystemCredentials {
 
 	private static String dbUrl;
-	private static String user;
-	private static String password;
+	private static String dbUser;
+	private static String dbPassword;
 
 	private static ImmutableMap<String, String> emailCredentials;
 
@@ -19,11 +19,11 @@ public class CopyOfSystemCredentials {
 	private static void initialize() {
 
 		dbUrl = "";
-		user = "";
-		password = "";
+		dbUser = "";
+		dbPassword = "";
 
 		emailCredentials = ImmutableMap.<String, String> builder()
-				.put("", "").build();
+				.put("email address", "email password").build();
 		
 		securityKey = "";
 	}
@@ -32,12 +32,12 @@ public class CopyOfSystemCredentials {
 		return dbUrl;
 	}
 
-	public static String getUser() {
-		return user;
+	public static String getDbUser() {
+		return dbUser;
 	}
 
-	public static String getPassword() {
-		return password;
+	public static String getDbPassword() {
+		return dbPassword;
 	}
 
 	public static ImmutableMap<String, String> getEmailCredentials() {

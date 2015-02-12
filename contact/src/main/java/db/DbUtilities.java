@@ -18,8 +18,8 @@ public class DbUtilities {
 
 		return DriverManager.getConnection(
 				SystemCredentials.getDbUrl(), 
-				SystemCredentials.getUser(), 
-				SystemCredentials.getPassword());
+				SystemCredentials.getDbUser(), 
+				SystemCredentials.getDbPassword());
 	}
 	
 	public static PreparedStatement prepareStatement(
