@@ -1,15 +1,14 @@
 package error;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Timestamp;
 
-public class Log {
+import admin.SystemConfigurations;
 
-	private static File logFile = new File("ErrorsLog.txt");
+public class Log {
 
 	public static void logError(Throwable error) {
 
@@ -23,7 +22,8 @@ public class Log {
 
 		BufferedWriter writer = null;
 		try {
-			writer = new BufferedWriter(new FileWriter(logFile, true));
+			writer = new BufferedWriter(
+					new FileWriter(SystemConfigurations.getErrorFileName(), true));
 
 			writer.write(time + ": " + data + "\n");
 			writer.write("\n");			
@@ -33,8 +33,7 @@ public class Log {
 		} finally {
 			try {
 				writer.close();
-			} catch (Exception e) {
-			}
+			} catch (Exception e) {}
 		}
 	}
 }

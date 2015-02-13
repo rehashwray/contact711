@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import admin.SystemCredentials;
+import admin.SystemConfigurations;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -35,7 +35,7 @@ public class PasswordRecover {
 		parameters.add("emailPassword");
 
 		ImmutableMap<String, String> credentials = null;		
-		credentials = SystemCredentials.getEmailCredentials();		
+		credentials = SystemConfigurations.getEmailCredentials();		
 
 		String subject = "Password";
 		String body = "Password: " + password;

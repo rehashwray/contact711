@@ -2,7 +2,6 @@ package viewInitializer;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,22 +23,17 @@ public class ViewCustomerInitializer extends ErrorHandler {
 
 		Integer id = null;
 		try {
-			id = Integer.parseInt(Cryptography.decrypt(
-					request.getParameter("id")));
+			id = Integer.parseInt(Cryptography.decrypt(request.getParameter("id")));
 		} catch (Exception e1) {
 			Log.logError(e1);
 			return json;
 		}
 
 		if (id != null) {
-			String username = null;
-			Authentication auth = SecurityContextHolder.getContext()
-					.getAuthentication();
-			if (!(auth instanceof AnonymousAuthenticationToken)) {
-				UserDetails userDetail = (UserDetails) auth.getPrincipal();
-				username = userDetail.getUsername();
-			}
-
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			String username = userDetail.getUsername();
+					
 			try {
 				CustomerProfile customerProfile = new DbCustomers()
 						.getCustomerProfile(username, id);
@@ -49,7 +43,6 @@ public class ViewCustomerInitializer extends ErrorHandler {
 				Log.logError(e);
 			}
 		}
-
 		return json;
 	}
 }

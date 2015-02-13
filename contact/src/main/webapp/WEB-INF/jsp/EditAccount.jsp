@@ -51,7 +51,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/" class="user">Search</a></li>
 					<li><a href="/AddCustomer" class="user">Add Customer</a></li>
-					<li><a href="/ViewErrors" class="admin">System Logs</a></li>										
+					<li><a href="SystemLogs" class="admin">System Logs</a></li>										
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="#">Edit Account</a></li>

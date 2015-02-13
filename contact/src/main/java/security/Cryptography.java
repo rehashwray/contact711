@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import admin.SystemCredentials;
+import admin.SystemConfigurations;
 
 public class Cryptography {
 
@@ -26,8 +26,8 @@ public class Cryptography {
 
 	private static void initialize() {
 
-		skey = SystemCredentials.getSecurityKey();
-		ivx = SystemCredentials.getSecurityKey();
+		skey = SystemConfigurations.getSecurityKey();
+		ivx = SystemConfigurations.getSecurityKey();
 	}
 
 	public static String encrypt(String data) throws CryptographyException,

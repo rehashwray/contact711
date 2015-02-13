@@ -15,7 +15,7 @@
 <link href="../dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<link href="../css/HomeAngular.css" type="text/css" rel="stylesheet"/>
+<link href="../css/SystemLogs.css" type="text/css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -43,10 +43,7 @@
 		</div>
 	</nav>
 
-	<div id='page' class="container">
-		<c:if test="${salary > 2000}">
-			bola
-		</c:if>			
+	<div id='page' class="container">	
 		
 	</div>
 
@@ -58,14 +55,14 @@
 			function(){
 				var errors = <%=errors%>
 				
-				if(errors == null)
-					window.location.href = "/";		
-	
-				for(var error in errors){
-					var line = errors[error]
-					$('#page').append(
-						'<span>' + line + '</span><br/>'				
-					)
+				if(errors == null || errors.length == 0){
+					$('#page').append("<div id='emptyResult' class='well'>Nothing Found</div>")
+				}
+				else{
+					for(var error in errors){
+						var line = errors[error]
+						$('#page').append('<span>' + line + '</span><br/>')
+					}
 				}
 			}
 		)

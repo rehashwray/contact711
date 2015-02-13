@@ -104,6 +104,20 @@
 				</div>				
 			</div>
 		</div>
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" 
+			aria-labelledby="mySmallModalLabel" aria-hidden="true" id="myModal">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-body">
+						<p>New Search?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default save" id='stay' data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-primary save" id="newSearch">Yes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- /container -->
 
@@ -134,7 +148,7 @@
 				event.preventDefault()
 	
 				var json = <%=json%>
-				if(json != null){
+				if(json != null && json.customer != null){
 					editManager.initialize(json)
 				}
 				else{
@@ -171,19 +185,27 @@
 			      event.preventDefault();
 			      return false;
 			    }
-			  }),
+			}),		
 			
 			$('body').on('click', '.changeButton', function(event){
 				event.preventDefault()
 
-				editManager.saveData()
+				$('#myModal').modal('show')																	
+			}),
+			
+			$('.save').click(function(event){
+				event.preventDefault()
+
+				var decision = $(this).attr('id') == 'stay'								
+				
+				editManager.saveData(decision)
 			}),
 			
 			$('body').on('click', '.deleteButton', function(event){
 				event.preventDefault()
 
-				editManager.deleteData()
-			})
+				editManager.deleteData()				
+			})		
 		);
 	</script>
 	

@@ -57,7 +57,7 @@ EditManager.prototype.populate = function populate(dataElements, type) {
 	}
 }
 
-EditManager.prototype.saveData = function saveData() {
+EditManager.prototype.saveData = function saveData(stayOnPage) {
 
 	var customerProfileAdd = {}
 
@@ -106,7 +106,12 @@ EditManager.prototype.saveData = function saveData() {
             request.setRequestHeader(header, token);
         },
 	    success: function(ids){
-			outerClass.updateData(ids)
+	    	if(stayOnPage){
+	    		outerClass.updateData(ids)
+	    	}
+	    	else{
+				window.location.href = "/";						
+	    	}
 	    }
 	}); 
 }

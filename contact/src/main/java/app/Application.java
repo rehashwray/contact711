@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableAutoConfiguration
 @Configuration
-@ComponentScan({"config", "controllers"})
+@ComponentScan({"securityConfigurations", "controllers"})
 @SpringBootApplication
 
 public class Application extends SpringBootServletInitializer {

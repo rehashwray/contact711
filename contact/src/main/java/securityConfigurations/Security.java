@@ -1,4 +1,4 @@
-package config;
+package securityConfigurations;
 
 import javax.sql.DataSource;
 

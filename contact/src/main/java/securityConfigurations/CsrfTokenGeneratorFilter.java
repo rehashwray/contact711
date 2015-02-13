@@ -1,4 +1,4 @@
-package config;
+package securityConfigurations;
 
 import java.io.IOException;
 
