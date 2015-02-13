@@ -2,7 +2,7 @@ package admin;
 
 import com.google.common.collect.ImmutableMap;
 
-public class CopyOfSystemCredentials {
+public class CopyOfSystemConfigurations {
 
 	private static String dbUrl;
 	private static String dbUser;
@@ -11,6 +11,8 @@ public class CopyOfSystemCredentials {
 	private static ImmutableMap<String, String> emailCredentials;
 
 	private static String securityKey;
+	
+	private static String errorFileName;
 
 	static {
 		initialize();
@@ -23,9 +25,13 @@ public class CopyOfSystemCredentials {
 		dbPassword = "";
 
 		emailCredentials = ImmutableMap.<String, String> builder()
-				.put("email address", "email password").build();
+				.put("emailAddress", "")
+				.put("emailPassword", "")
+				.build();
 		
 		securityKey = "";
+		
+		errorFileName = "";
 	}
 
 	public static String getDbUrl() {
@@ -46,5 +52,9 @@ public class CopyOfSystemCredentials {
 
 	public static String getSecurityKey() {
 		return securityKey;
+	}
+	
+	public static String getErrorFileName() {
+		return errorFileName;
 	}
 }
