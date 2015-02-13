@@ -12,7 +12,7 @@ mainApp.controller("customersController",
 	$scope.nothingFound = false
 
 	$scope.pageModel = {}	
-	$scope.displayLimit = 10
+	$scope.displayLimit = 1
 	
 	$scope.getCustomers = function(currentPage) {
 		Search.getCustomers($scope, currentPage)

@@ -132,9 +132,7 @@
 		var addManager = new AddManager()
 	
 		$(
-			function() {
-				event.preventDefault()
-	
+			function() {	
 				addManager.initialize()
 			},			
 	

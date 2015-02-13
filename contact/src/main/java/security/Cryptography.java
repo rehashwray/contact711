@@ -38,13 +38,10 @@ public class Cryptography {
 
 		Cipher cipher = getCypher(keySpec, ivSpec, Cipher.ENCRYPT_MODE);
 
-		// Gets the raw bytes to encrypt, UTF8 is needed for
-		// having a standard character set
 		byte[] stringBytes;
 
 		stringBytes = data.getBytes("UTF8");
 
-		// encrypt using the cypher
 		byte[] raw;
 		try {
 			raw = cipher.doFinal(stringBytes);
@@ -54,7 +51,6 @@ public class Cryptography {
 			throw new CryptographyException(e);
 		}
 
-		// converts to base64 for easier display.
 		String base64 = DatatypeConverter.printBase64Binary(raw);
 
 		return base64;
@@ -71,7 +67,6 @@ public class Cryptography {
 		byte[] raw;
 		raw = DatatypeConverter.parseBase64Binary(encryptedData);
 
-		// decode the message
 		byte[] stringBytes;
 		try {
 			stringBytes = cipher.doFinal(raw);
@@ -83,7 +78,6 @@ public class Cryptography {
 					e);
 		}
 
-		// converts the decoded message to a String
 		String decriptedData;
 		try {
 			decriptedData = new String(stringBytes, "UTF8");
@@ -92,17 +86,9 @@ public class Cryptography {
 		}
 		return decriptedData;
 	}
-
-	/**
-	 * @param keySpec
-	 * @param ivSpec
-	 * @param mode
-	 * @return
-	 * @throws CryptographyException
-	 */
+	
 	private static Cipher getCypher(SecretKeySpec keySpec,
 			IvParameterSpec ivSpec, int mode) throws CryptographyException {
-		// Get a cipher object.
 		Cipher cipher;
 		try {
 			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");

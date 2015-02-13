@@ -287,7 +287,7 @@ public class DbCustomers {
 						rs.getString("customer_name"), 
 						rs.getString("last_name"));
 			 			
-				customerEmails.put(//fix query select specific column name instead of all
+				customerEmails.put(
 						rs.getInt("email_id"),
 						new CustomerEmail(
 								rs.getInt("customer_id"), 

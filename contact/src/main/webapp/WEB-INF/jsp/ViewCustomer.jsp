@@ -144,9 +144,7 @@
 		var editManager = new EditManager()
 	
 		$(
-			function() {
-				event.preventDefault()
-	
+			function() {	
 				var json = <%=json%>
 				if(json != null && json.customer != null){
 					editManager.initialize(json)
