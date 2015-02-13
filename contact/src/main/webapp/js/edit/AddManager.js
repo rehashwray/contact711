@@ -1,5 +1,5 @@
 
-var AddManager = function AddManager() {//improve constructor
+var AddManager = function AddManager() {
 
 	this.customerManager = null;
 	this.emailsManager = null;

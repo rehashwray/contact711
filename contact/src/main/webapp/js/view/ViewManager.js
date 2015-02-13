@@ -171,7 +171,7 @@ ViewManager.prototype
 	else{
 		$(id).parent().parent().removeClass('has-error')
 		
-		this.deleteInvalidInput([id])//problem if i fix just one input from group
+		this.deleteInvalidInput([id])
 	}
 }
 	

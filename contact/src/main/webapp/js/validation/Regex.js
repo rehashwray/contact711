@@ -23,12 +23,12 @@ var types = {
 		pattern : '^\\d[\-\\d]*\\d$',
 		maxLength : 20
 	},
-	street : {//
+	street : {
 		pattern : '^[\\dA-Za-z\\s\'\#\&\-\/\\\\]+$',
 		maxLength : 50
 	},
 	city : {
-		pattern : '^[a-zA-Z\\s\-\,\\.\'\s]+$',//doesn't work for search
+		pattern : '^[a-zA-Z\\s\-\,\\.\'\s]+$',
 		maxLength : 30
 	},
 	state : {
